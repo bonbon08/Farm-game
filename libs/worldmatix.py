@@ -46,7 +46,6 @@ class Farmmatrix:
                 if y[0] in [1,2] and y[1]<=0:
                     self.matrix[xs][ys][0] += 1
                     self.matrix[xs][ys][1] = random.randint(1000,10000)
-                print(self.matrix[xs][ys])
                 self.matrix[xs][ys][1] -= 1
                 ys += 1
             xs += 1

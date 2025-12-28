@@ -52,7 +52,6 @@ class Game:
                         color = "black"
                 pygame.draw.rect(self.screen, color, (xs*self.wmap.matrix_calc_x, ys*self.wmap.matrix_calc_y, self.field_size_x, self.field_size_y))
                 ys += 1
-            #print(self.wmap.return_tile_x, self.wmap.return_tile_y, self.money, self.wmap.matrix)
             xs += 1
             ys = 0
         self.Player_obj.move()
@@ -60,7 +59,6 @@ class Game:
         pygame.draw.rect(self.screen, "red", (self.Player_obj.x, self.Player_obj.y, 32, 32))
         self.screen.blit(text, (4,400))
         pygame.display.flip()
-        # Debug
     def mainloop(self):
         while self.running:
             self.tick()
