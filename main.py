@@ -57,7 +57,7 @@ class Game:
             ys = 0
         self.Player_obj.move()
         pygame.draw.rect(self.screen, "grey", (self.wmap.return_tile_x*self.wmap.matrix_calc_x, self.wmap.return_tile_y*self.wmap.matrix_calc_y, self.field_size_x, self.field_size_y))
-        pygame.draw.rect(self.screen, "red", (self.Player_obj.x, self.Player_obj.y, 8, 8))
+        pygame.draw.rect(self.screen, "red", (self.Player_obj.x, self.Player_obj.y, 32, 32))
         self.screen.blit(text, (4,400))
         pygame.display.flip()
         # Debug
