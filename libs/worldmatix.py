@@ -15,12 +15,8 @@ class Farmmatrix:
             self.matrix.append(subline)
     def check_for_nearest_tile(self):
         return_tile_y = 0
-        base_tile_x = round(self.Game.Player_obj.x/self.matrix_calc_x)
-        base_tile_y = round(self.Game.Player_obj.y/self.matrix_calc_y)
-        if base_tile_y >= self.max_y:
-            base_tile_y = base_tile_y - 1
-        if base_tile_x >= self.max_x:
-            base_tile_x = base_tile_x -1
+        base_tile_x = int(self.Game.Player_obj.x/self.matrix_calc_x)
+        base_tile_y = int(self.Game.Player_obj.y/self.matrix_calc_y)
         self.return_tile_x = base_tile_x
         self.return_tile_y = base_tile_y
         match self.Game.Player_obj.facing_position:
@@ -32,7 +28,7 @@ class Farmmatrix:
                     self.return_tile_x = base_tile_x - 1
             case 2:
                 if base_tile_y>0:
-                    self.return_tile_y = base_tile_y -1
+                    self.return_tile_y = base_tile_y - 1
             case 3:
                 if base_tile_x<self.max_x-1:
                     self.return_tile_x = base_tile_x + 1
