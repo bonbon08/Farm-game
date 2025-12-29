@@ -1,6 +1,6 @@
 import pygame
 
-from libs import player, worldmatix, tiles
+from libs import player, worldmatix, tiles, pause_menu
 
 
 class Game:
@@ -24,8 +24,9 @@ class Game:
         self.running = True
         self.Player_obj = player.Player_class(self)
         self.spritesheet = tiles.TileSet("data/SpriteSheet.png", 16, 16)
+        self.Pause_Menu = pause_menu.Pause_Menu(self)
         pygame.display.set_caption("Farmgame")
-        pygame.display.set_icon(pygame.transform.scale(tiles.TileSet.get_tile(self.spritesheet, 4),(128,128)))
+        pygame.display.set_icon(pygame.transform.scale(tiles.TileSet.get_tile(self.spritesheet, 1),(256,256)))
         #self.grass = 
     def tick(self):
         for event in pygame.event.get():
@@ -36,6 +37,7 @@ class Game:
         self.wmap.check_for_nearest_tile()
         self.wmap.update()
         text = self.gamefont.render(str(self.money), False, (0, 0, 0))
+        self.Pause_Menu.check_for_pause()
         # Draw mechanic
         self.screen.fill("blue")
         xs = 0

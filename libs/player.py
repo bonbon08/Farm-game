@@ -9,24 +9,24 @@ class Player_class:
         self.facing_position = 0
         self.trigger = 0
     def move(self):
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_w]:
+        self.keys = pygame.key.get_pressed()
+        if self.keys[pygame.K_w]:
             if self.y > 0:
                 self.y -= self.Game.speed
             self.facing_position = 2
-        if keys[pygame.K_s]:
+        if self.keys[pygame.K_s]:
             if self.y < 464:
                 self.y += self.Game.speed
             self.facing_position = 0
-        if keys[pygame.K_a]:
+        if self.keys[pygame.K_a]:
             if self.x>0:
                 self.x -= self.Game.speed
             self.facing_position = 1
-        if keys[pygame.K_d]:
+        if self.keys[pygame.K_d]:
             if self.x < 624:
                 self.x += self.Game.speed
             self.facing_position = 3
-        if keys[pygame.K_x] and self.trigger <= 0:
+        if self.keys[pygame.K_x] and self.trigger <= 0:
             print(self.Game.wmap.matrix[self.Game.wmap.return_tile_x][self.Game.wmap.return_tile_y][0])
             match self.Game.wmap.matrix[self.Game.wmap.return_tile_x][self.Game.wmap.return_tile_y][0]:
                 case 0:
