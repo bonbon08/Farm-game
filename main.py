@@ -1,6 +1,6 @@
 import pygame
 
-from libs import player, worldmatix
+from libs import player, worldmatix, tiles
 
 
 class Game:
@@ -23,6 +23,10 @@ class Game:
         self.clock = pygame.time.Clock()
         self.running = True
         self.Player_obj = player.Player_class(self)
+        self.spritesheet = tiles.TileSet("data/SpriteSheet.png", 16, 16)
+        pygame.display.set_caption("Farmgame")
+        pygame.display.set_icon(pygame.transform.scale(tiles.TileSet.get_tile(self.spritesheet, 4),(128,128)))
+        #self.grass = 
     def tick(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -39,24 +43,22 @@ class Game:
         color = "green"
         for x in self.wmap.matrix:
             for y in x:
+                self.screen.blit(self.spritesheet.get_tile_scalled(4, (32, 32)), (xs*self.wmap.matrix_calc_x, ys*self.wmap.matrix_calc_y))
                 match y[0]:
-                    case 0:
-                        color = "green"
                     case 1:
-                        color = "yellow"
+                        self.screen.blit(self.spritesheet.get_tile_scalled(0, (32, 32)), (xs*self.wmap.matrix_calc_x, ys*self.wmap.matrix_calc_y))
                     case 2:
-                        color = "orange"
+                        self.screen.blit(self.spritesheet.get_tile_scalled(1, (32, 32)), (xs*self.wmap.matrix_calc_x, ys*self.wmap.matrix_calc_y))
                     case 3:
-                        color = "red"
+                        self.screen.blit(self.spritesheet.get_tile_scalled(2, (32, 32)), (xs*self.wmap.matrix_calc_x, ys*self.wmap.matrix_calc_y))
                     case 4:
-                        color = "black"
-                pygame.draw.rect(self.screen, color, (xs*self.wmap.matrix_calc_x, ys*self.wmap.matrix_calc_y, self.field_size_x, self.field_size_y))
+                        self.screen.blit(self.spritesheet.get_tile_scalled(3, (32, 32)), (xs*self.wmap.matrix_calc_x, ys*self.wmap.matrix_calc_y))
                 ys += 1
             xs += 1
             ys = 0
         self.Player_obj.move()
-        pygame.draw.rect(self.screen, "grey", (self.wmap.return_tile_x*self.wmap.matrix_calc_x, self.wmap.return_tile_y*self.wmap.matrix_calc_y, self.field_size_x, self.field_size_y))
-        pygame.draw.rect(self.screen, "red", (self.Player_obj.x, self.Player_obj.y, 32, 32))
+        self.screen.blit(self.spritesheet.get_tile_scalled(11, (32, 32)), (self.wmap.return_tile_x*self.wmap.matrix_calc_x, self.wmap.return_tile_y*self.wmap.matrix_calc_y))
+        self.screen.blit(self.spritesheet.get_tile_scalled(5, (32, 32)), (self.Player_obj.x, self.Player_obj.y))
         self.screen.blit(text, (4,400))
         pygame.display.flip()
     def mainloop(self):
@@ -65,3 +67,4 @@ class Game:
             self.clock.tick(60)
     pygame.quit()
 Game().mainloop()
+
