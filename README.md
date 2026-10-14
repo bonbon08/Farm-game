@@ -1,6 +1,15 @@
 # Farmi
-## Simple Farmgame developed during the Train ride to the 39c3
-You are the red dot and you want money, walk with wasd and place wheat seeds with x, if your wheat ist ready it will turn orange, during that time you have to harvest it, for each successfull harvest you recieve 10 Money. If its turned red you waited to long and your Wheat is worhtless. If your wheat gets black its infected with mold and it will take 1-30 Money to clean this field again
+
+Lokales 2-Spieler-Couch-Coop-Farmspiel in C mit [raylib](https://www.raylib.com),
+urspruenglich als kleines Pygame-Prototyp waehrend der Zugfahrt zum 39c3 entstanden.
+
+Baue Felder an, erntet rechtzeitig (zu frueh oder zu spaet bringt nichts, Unkraut
+kostet Geld), kauft im Shop Upgrades, erfuellt Quests und behaltet den Tag/Nacht-
+Zyklus im Blick.
+
+Siehe [`c/README.md`](c/README.md) fuer Steuerung, Build-Anleitung und Systeme.
+
 ### Requirements
-- Python
-- Pygame library
+- C11-Compiler (gcc/clang)
+- raylib (pkg-config `raylib`)
+- make

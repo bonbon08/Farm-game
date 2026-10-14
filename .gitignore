@@ -1,2 +1,6 @@
 /.venv
 */__pycache__
+c/*.o
+c/src/*.o
+c/farmi
+c/savegame.dat
